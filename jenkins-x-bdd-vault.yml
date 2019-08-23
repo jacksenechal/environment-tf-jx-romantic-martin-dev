@@ -20,7 +20,7 @@ pipelineConfig:
         stages:
           - name: ci
             steps:
-              - comamnd: bdd/boot-local/setup.sh
+              - comamnd: bdd/boot-vault/setup.sh
                 name: setup
               - command: bdd/ci.sh
                 name: runci

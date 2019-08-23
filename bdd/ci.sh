@@ -39,21 +39,15 @@ export JX_VALUE_PROW_HMACTOKEN="$GH_CREDS_PSW"
 # TODO temporary hack until the batch mode in jx is fixed...
 export JX_BATCH_MODE="true"
 
-# prepare the BDD configuration
-mkdir bdd-config
-cp -r `ls -A | grep -v "bdd-config"` bdd-config
-cp bdd/boot-local/jx-requirements.yml bdd-config
-cp bdd/boot-local/parameters.yaml bdd-config/env
-cd bdd-config
-
 # TODO hack until we fix boot to do this too!
 helm init --client-only
 helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
 
 jx step bdd \
     --use-revision \
+    --version-repo-pr \
     --versions-repo https://github.com/jenkins-x/jenkins-x-versions.git \
-    --config bdd/boot-local/cluster.yaml \
+    --config bdd/boot-vault/cluster.yaml \
     --gopath /tmp \
     --git-provider=github \
     --git-username $GH_USERNAME \
