@@ -20,8 +20,8 @@ pipelineConfig:
         stages:
           - name: ci
             steps:
-              - comamnd: bdd/boot-local/setup.sh
-                name: setup
-              - command: bdd/ci.sh
+              - name: setup
+                command: bdd/boot-local/setup.sh
+              - name: runci 
+                command: bdd/ci.sh
                 args: ['bdd/boot-local/cluster.yaml']
-                name: runci
