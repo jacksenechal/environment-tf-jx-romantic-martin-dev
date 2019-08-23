@@ -41,7 +41,7 @@ export JX_BATCH_MODE="true"
 
 # prepare the BDD configuration
 mkdir bdd-config
-cp -rvf * bdd-config
+cp -r `ls -A | grep -v "bdd-config"` bdd-config
 cp bdd/boot-local/jx-requirements.yml bdd-config
 cp bdd/boot-local/parameters.yaml bdd-config/env
 cd bdd-config
