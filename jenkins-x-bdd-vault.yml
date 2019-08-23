@@ -23,4 +23,3 @@ pipelineConfig:
               - name: run-bdd
                 command: bdd/bdd.sh
                 args: ['bdd/boot-vault', 'bdd-config']
-                dir: /workspace/source/bdd-config
