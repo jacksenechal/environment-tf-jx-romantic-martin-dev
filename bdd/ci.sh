@@ -2,6 +2,12 @@
 set -e
 set -x
 
+if [ $# -eq 0 ]; then
+    echo "Please provide the configuration path"
+    exit -1
+fi
+CONFIG_PATH=$1
+
 export GH_USERNAME="jenkins-x-bot-test"
 export GH_EMAIL="jenkins-x@googlegroups.com"
 export GH_OWNER="cb-kubecd"
@@ -47,7 +53,7 @@ jx step bdd \
     --use-revision \
     --version-repo-pr \
     --versions-repo https://github.com/jenkins-x/jenkins-x-versions.git \
-    --config bdd/boot-vault/cluster.yaml \
+    --config $CONFIG_PATH \
     --gopath /tmp \
     --git-provider=github \
     --git-username $GH_USERNAME \

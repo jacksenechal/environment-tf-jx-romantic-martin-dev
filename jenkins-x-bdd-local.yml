@@ -23,4 +23,5 @@ pipelineConfig:
               - comamnd: bdd/boot-local/setup.sh
                 name: setup
               - command: bdd/ci.sh
+                args: ['bdd/boot-local/cluster.yaml']
                 name: runci

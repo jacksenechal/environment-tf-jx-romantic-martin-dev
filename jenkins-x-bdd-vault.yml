@@ -23,4 +23,5 @@ pipelineConfig:
               - comamnd: bdd/boot-vault/setup.sh
                 name: setup
               - command: bdd/ci.sh
+                args: ['bdd/boot-vault/cluster.yaml']
                 name: runci
