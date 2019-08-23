@@ -22,7 +22,7 @@ pipelineConfig:
             steps:
               - name: setup
                 command: bdd/setup.sh
-                args:['bdd/boot-local', 'bdd-config']
+                args: ['bdd/boot-local', 'bdd-config']
               - name: runci 
                 command: bdd/ci.sh
                 args: ['bdd/boot-local/cluster.yaml']
