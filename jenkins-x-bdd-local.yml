@@ -24,6 +24,10 @@ pipelineConfig:
                 command: bdd/setup.sh
                 args: ['bdd/boot-local', 'bdd-config']
                 dir: /workspace/source
+              - name: check
+                command: ls
+                args: ['-al']
+                dir: /workspace/source
               - name: runci 
                 command: bdd/ci.sh
                 args: ['bdd/boot-local/cluster.yaml']
