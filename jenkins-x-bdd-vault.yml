@@ -22,4 +22,4 @@ pipelineConfig:
             steps:
               - name: run-bdd
                 command: bdd/bdd.sh
-                args: ['bdd/boot-local', 'bdd-config']
+                args: ['bdd/boot-vault', 'bdd-config']
