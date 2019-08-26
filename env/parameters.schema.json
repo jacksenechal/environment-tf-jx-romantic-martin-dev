@@ -31,7 +31,6 @@
       "required": [
         "host",
         "username",
-        "email",
         "token"
       ],
       "properties": {
@@ -39,11 +38,6 @@
           "type": "string",
           "title": "Pipeline bot Git username",
           "description": "The Git user that will perform git operations inside a pipeline. It should be a user within the Git organisation/owner where environment repositories will live. This is normally a bot."
-        },
-        "email": {
-          "type": "string",
-          "title": "Pipeline bot Git email address",
-          "description": "The email address of the Git user that will perform git operations inside a pipeline."
         },
         "token": {
           "type": "string",
@@ -136,7 +130,6 @@
                 "required": [
                   "host",
                   "username",
-                  "email",
                   "token"
                 ],
                 "properties": {
@@ -148,11 +141,6 @@
                     "type": "string",
                     "title": "Pipeline bot Git username",
                     "description": "The Git user that will perform git operations inside a pipeline. It should be a user within the Git organisation/owner where environment repositories will live. This is normally a bot."
-                  },
-                  "email": {
-                  "type": "string",
-                  "title": "Pipeline bot Git email address",
-                  "description": "The email address of the Git user that will perform git operations inside a pipeline."
                   },
                   "token": {
                     "type": "string",
