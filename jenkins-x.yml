@@ -35,7 +35,8 @@ pipelineConfig:
                 args: ['step','create','install', 'values', '-b']
               - name: install-external-dns
                 dir: /workspace/source/systems/external-dns
-                command: "if $(awk '/^.*externalDNS.*/ {print $2}' ../../jx-requirements.yml); then jx step helm apply --boot --remote --no-vault --name jx; else exit 0; fi"
+                command: jx
+                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx']
               - name: install-cert-manager-crds
                 dir: /workspace/source
                 command: kubectl
@@ -58,11 +59,11 @@ pipelineConfig:
                 dir: /workspace/source/systems/vault
                 command: jx
                 args: ['step', 'boot','vault']
-              - name: generate-install-params
+              - name: helm-populate-params
                 dir: /workspace/source/env
                 command: jx
                 args: ['step', 'create', 'values', '--name', 'parameters']
-              - name: install-jenkins-x
+              - name: 
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
