@@ -9,9 +9,6 @@ cluster:
  {{- if .Requirements.ingress.tls }}
 certmanager:
   production: "{{ .Requirements.ingress.tls.production }}"
-{{- if .Requirements.ingress.tls.enabled }}
   email:  "{{ .Requirements.ingress.tls.email }}"
-{{- else }}
-  enabled: false
-{{- end }}
+  enabled: {{ .Requirements.ingress.tls.enabled }}
 {{- end }}

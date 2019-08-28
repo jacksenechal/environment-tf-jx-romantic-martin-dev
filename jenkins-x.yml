@@ -63,7 +63,7 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: jx
                 args: ['step', 'create', 'values', '--name', 'parameters']
-              - name: 
+              - name: install-env 
                 dir: /workspace/source/env
                 command: jx
                 args: ['step','helm','apply', '--boot', '--remote', '--name', 'jenkins-x', '--provider-values-dir', '../kubeProviders']
