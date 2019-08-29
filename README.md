@@ -12,9 +12,18 @@ This repository contains the source code for [Jenkins X Boot configuration](http
 
 ### Run the new Jenkins X Bootstrap Pipeline
 
-Clone this git repository and make sure you have a recent `jx` binary:
+Create a fork of this git repository on github. We suggest renaming it to match the pattern `environment-<cluster name>-dev`. To rename your repository go to the repository settings in github. 
 
-From inside the git clone of this repository type:
+Clone your newly forked git repository:
+
+```
+git clone https://github.com/<org>/environment-<cluster name>-dev && cd environment-<cluster name>-dev
+```
+ 
+> It's important that you cd into your newly checked out git repo, otherwise `jx boot` will use the upstream Jenkins X boot
+configuration.
+
+Now, in the checkout, run:
 
 ``` 
 jx boot
@@ -38,11 +47,11 @@ We have improved the support for value + secret composition via this [issue](htt
 
 ### Parameters file
 
-We define a [env/parameters.yaml](https://github.com/jstrachan/environment-simple-tekton/blob/master/env/parameters.yaml) file which defines all the parameters either checked in or loaded from Vault or a local file system secrets location.
+We define a [env/parameters.yaml](https://github.com/jenkins-x/jenkins-x-boot-config/blob/master/env/parameters.yaml) file which defines all the parameters either checked in or loaded from Vault or a local file system secrets location.
 
 #### Injecting secrets into the parameters
 
-If you look at the current [env/parameters.yaml](https://github.com/jstrachan/environment-simple-tekton/blob/master/env/parameters.yaml) file you will see some values inlined and others use URIs of the form `local:my-cluster-folder/nameofSecret/key`. This currently supports 2 schemes:
+If you look at the current [env/parameters.yaml](https://github.com/jenkins-x/jenkins-x-boot-config/blob/master/env/parameters.yaml) file you will see some values inlined and others use URIs of the form `local:my-cluster-folder/nameofSecret/key`. This currently supports 2 schemes:
 
 * `vault:` to load from a path + key from Vault
 * `local:` to load from a key in a YAML file at `~/.jx/localSecrets/$path.yml`
