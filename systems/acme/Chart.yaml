@@ -1,5 +1,5 @@
-description: Ingress Chart
+description: ACME Chart
 maintainers:
 - name: Team
-name: jxing
+name: acme
 version: "1"
