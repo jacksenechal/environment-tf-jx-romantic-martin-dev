@@ -1,1 +1,8 @@
-dummy: true
+tekton:
+{{- if eq .Requirements.webhook "prow" }}
+  enabled: true
+{{- else if eq .Requirements.webhook "lighthouse" }}
+  enabled: true
+{{- else }}
+  enabled: false
+{{- end }}

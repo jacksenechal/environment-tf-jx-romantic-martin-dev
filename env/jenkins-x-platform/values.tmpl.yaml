@@ -13,7 +13,11 @@ chartmuseum:
       BASIC_AUTH_PASS: "{{ .Parameters.adminUser.password }}"
 
 nexus:
-    defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+  defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+
+jenkins:
+  Master:
+    AdminPassword: "{{ .Parameters.adminUser.password }}"
 
 PipelineSecrets:
     GitCreds: https://{{ .Parameters.pipelineUser.username }}:{{ .Parameters.pipelineUser.token }}@{{ trimPrefix "https://" .Requirements.cluster.gitServer | default "https://github.com" |  }}

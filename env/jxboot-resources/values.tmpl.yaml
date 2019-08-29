@@ -26,7 +26,7 @@ gitops:
   gitName: {{ .Requirements.cluster.gitName | default "github" }}
   server: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
   owner: {{ .Requirements.cluster.environmentGitOwner }}
-  webhook: {{ .Requirements.webhook | default "prow" | title | quote }}
+  webhook: {{ .Requirements.webhook | default "prow" | quote }}
 {{- if eq .Requirements.cluster.gitKind "bitbucketserver" }}
   gitUrlPathPrefix: "/scm"
 {{- else }}
