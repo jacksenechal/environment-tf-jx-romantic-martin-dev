@@ -8,7 +8,7 @@ pipelineConfig:
         stages:
           - name: release
             steps:
-              - name: chagnelog
+              - name: changelog
                 command: jx
                 args: 
                 - step
