@@ -4,7 +4,10 @@ pipelineConfig:
     release:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-go:0.1.714
+          image: gcr.io/jenkinsxio/builder-go:0.1.686
+        environment:
+          - name: DEPLOY_NAMESPACE
+            value: jx
         stages:
           - name: release
             steps:
@@ -22,7 +25,10 @@ pipelineConfig:
               - name: install-nginx
                 dir: /workspace/source/systems/jxing
                 command: jx
-                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jxing', '--namespace', 'kube-system']
+                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jxing']
+                env:
+                  - name: DEPLOY_NAMESPACE
+                    value: kube-system
               - name: create-install-values
                 dir: /workspace/source/env
                 command: jx
@@ -35,10 +41,16 @@ pipelineConfig:
                 dir: /workspace/source
                 command: kubectl
                 args: ['apply', '--wait', '--validate=true', '-f', 'https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml']
+                env:
+                  - name: DEPLOY_NAMESPACE
+                    value: cert-manager
               - name: install-cert-manager
                 dir: /workspace/source/systems/cm
                 command: jx
-                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx', '--namespace', 'cert-manager']
+                args: ['step','helm','apply', '--boot', '--remote', '--no-vault', '--name', 'jx']
+                env:
+                  - name: DEPLOY_NAMESPACE
+                    value: cert-manager
               - name: install-acme-issuer-and-certificate
                 dir: /workspace/source/systems/acme
                 command: jx
@@ -87,7 +99,7 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-go:0.1.714
+          image: gcr.io/jenkinsxio/builder-go:0.1.686
         stages:
           - name: pr
             steps:
@@ -95,3 +107,4 @@ pipelineConfig:
                 dir: /workspace/source/env
                 command: make
                 args: ['build']
+
