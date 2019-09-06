@@ -63,10 +63,10 @@ if [[ -n "${DOMAIN_ROTATION}" ]]; then
         exit -1
     fi
     echo "Using domain: ${DOMAIN}"
-    sed -i "/^ *ingress:/,/^ *[^:]*:/s/domain: .*/domain: ${DOMAIN}/" $DST_PATH/jx-requirements.yml
+    sed -i "/^ *ingress:/,/^ *[^:]*:/s/domain: .*/domain: ${DOMAIN}/" jx-requirements.yml
 fi
 echo "Using jx-requirements.yml"
-cat $DST_PATH/jx-requirements.yml
+cat jx-requirements.yml
 
 # TODO hack until we fix boot to do this too!
 helm init --client-only
