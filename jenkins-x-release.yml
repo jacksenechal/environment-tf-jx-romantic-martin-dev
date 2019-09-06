@@ -4,7 +4,7 @@ pipelineConfig:
     release:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-jx:0.1.730
+          image: gcr.io/jenkinsxio/builder-jx:0.1.731
         stages:
           - name: release
             steps:

@@ -22,7 +22,7 @@ pipelineConfig:
           - name: DOMAIN_SUFFIX
             value: ".bdd.jenkins-x.rocks"
         agent:
-          image: gcr.io/jenkinsxio/builder-go-maven:0.1.730
+          image: gcr.io/jenkinsxio/builder-go-maven:0.1.731
         stages:
           - name: ci
             steps:
