@@ -15,6 +15,12 @@ pipelineConfig:
         environment:
           - name: GOPROXY
             value: http://jenkins-x-athens-proxy:80
+          - name: DOMAIN_ROTATION
+            value: "true"
+          - name: DOMAIN_PREFIX
+            value: "boot"
+          - name: DOMAIN_SUFFIX
+            value: ".bdd.jenkins-x.rocks"
         agent:
           image: gcr.io/jenkinsxio/builder-go-maven:0.1.728
         stages:
