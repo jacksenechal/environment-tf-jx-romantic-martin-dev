@@ -11,9 +11,15 @@ environments:
   - key: staging
     owner: ""
     repository: ""
+    ingress:
+      tls:
+        enabled: false
   - key: production
     owner: ""
     repository: ""
+    ingress:
+      tls:
+        enabled: false
 gitops: true
 ingress:
   domain: boot.bdd.jenkins-x.rocks
