@@ -28,9 +28,10 @@ mkdir -p $JX_HOME
 jx --version
 jx step git credentials
 
+# setup GCP service account
 gcloud auth activate-service-account --key-file $GKE_SA
 
-# lets setup git 
+# setup git 
 git config --global --add user.name JenkinsXBot
 git config --global --add user.email jenkins-x@googlegroups.com
 
@@ -52,6 +53,20 @@ cp -r `ls -A | grep -v "${DST_PATH}"` $DST_PATH
 cp $SRC_PATH/jx-requirements.yml $DST_PATH
 cp $SRC_PATH/parameters.yaml $DST_PATH/env
 cd $DST_PATH
+
+# Rotate the domain to avoid cert-manager API rate limit
+if [[ -n "${DOMAIN_ROTATION}" ]]; then
+    SHARD=$(date +"%l" | xargs)
+    DOMAIN="${DOMAIN_PREFIX}${SHARD}${DOMAIN_SUFFIX}"
+    if [[ -z "${DOMAIN}" ]]; then
+        echo "Domain rotation enabled. Please set DOMAIN_PREFIX and DOMAIN_SUFFIX environment variables" 
+        exit -1
+    fi
+    echo "Using domain: ${DOMAIN}"
+    sed -i "/^ *ingress:/,/^ *[^:]*:/s/domain: .*/domain: ${DOMAIN}/" jx-requirements.yml
+fi
+echo "Using jx-requirements.yml"
+cat jx-requirements.yml
 
 # TODO hack until we fix boot to do this too!
 helm init --client-only
