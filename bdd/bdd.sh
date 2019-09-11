@@ -54,7 +54,7 @@ cp $SRC_PATH/parameters.yaml $DST_PATH/env
 cd $DST_PATH
 
 # Rotate the domain to avoid cert-manager API rate limit
-if [[ -n "${DOMAIN_ROTATION}" ]]; then
+if [[ "${DOMAIN_ROTATION}" == "true" ]]; then
     SHARD=$(date +"%l" | xargs)
     DOMAIN="${DOMAIN_PREFIX}${SHARD}${DOMAIN_SUFFIX}"
     if [[ -z "${DOMAIN}" ]]; then
