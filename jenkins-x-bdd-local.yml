@@ -17,6 +17,8 @@ pipelineConfig:
             value: http://jenkins-x-athens-proxy:80
           - name: GKE_SA
             value: /secrets/bdd/sa.json
+          - name: DOMAIN_ROTATION
+            value: "false"
         agent:
           image: gcr.io/jenkinsxio/builder-go-maven
         stages:
