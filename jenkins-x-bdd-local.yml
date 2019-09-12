@@ -19,6 +19,16 @@ pipelineConfig:
             value: /secrets/bdd/sa.json
           - name: DOMAIN_ROTATION
             value: "false"
+          - name: GH_ACCESS_TOKEN 
+            valueFrom:
+              secretKeyRef:
+                name: jenkins-x-bot-test-github
+                key: password
+          - name: JENKINS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: test-jenkins-user 
+                key: password
         agent:
           image: gcr.io/jenkinsxio/builder-go-maven
         stages:
