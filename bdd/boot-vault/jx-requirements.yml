@@ -21,13 +21,12 @@ environments:
       tls:
         enabled: false
 ingress:
-  domain: boot.bdd.jenkins-x.rocks
-  externalDNS: true
-  namespaceSubDomain: -jx.
+  domain: ""
+  externalDNS: false
   tls:
-    email: jenkins-x@googlegroups.com
-    enabled: true
-    production: true
+    email: ""
+    enabled: false
+    production: false
 kaniko: true
 secretStorage: vault
 storage:
