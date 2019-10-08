@@ -38,6 +38,8 @@ storage:
   reports:
     enabled: true
     url: "gs://jx-bdd-log-store3"
+vault:
+  disableURLDiscovery: true
 versionStream:
   ref: "master"
   url: https://github.com/jenkins-x/jenkins-x-versions.git
