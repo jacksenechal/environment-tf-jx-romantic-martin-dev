@@ -20,7 +20,7 @@ environments:
     ingress:
       tls:
         enabled: false
-gitops: true
+gitops: false
 ingress:
   domain: boot.bdd.jenkins-x.rocks
   externalDNS: true
