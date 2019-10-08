@@ -20,13 +20,15 @@ environments:
     ingress:
       tls:
         enabled: false
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  domain: boot.bdd.jenkins-x.rocks
+  externalDNS: true
+  namespaceSubDomain: -jx.
   tls:
-    email: ""
-    enabled: false
-    production: false
+    email: jenkins-x@googlegroups.com
+    enabled: true
+    production: true
 kaniko: true
 secretStorage: vault
 storage:
@@ -36,10 +38,7 @@ storage:
   reports:
     enabled: true
     url: "gs://jx-bdd-log-store3"
-vault:
-  disableURLDiscovery: true
 versionStream:
   ref: "master"
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
-

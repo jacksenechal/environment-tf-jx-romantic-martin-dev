@@ -23,7 +23,9 @@ pipelineConfig:
             value: ".bdd.jenkins-x.rocks"
           - name: GKE_SA
             value: /secrets/bdd/sa.json
-          - name: GH_ACCESS_TOKEN 
+          - name: JX_REQUIREMENT_VAULT_DISABLE_URL_DISCOVERY
+            value: "true"
+          - name: GH_ACCESS_TOKEN
             valueFrom:
               secretKeyRef:
                 name: jenkins-x-bot-test-github
