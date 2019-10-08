@@ -13,6 +13,9 @@ cluster:
   zone: ""
 {{- end }}
   name: ""
+{{- if hasKey .Requirements.cluster "provider" }}
+  provider:  {{ .Requirements.cluster.provider }}
+{{- end }}
   serverUrl: ""
 {{- if .Requirements.ingress.tls.enabled }}
   tls: true

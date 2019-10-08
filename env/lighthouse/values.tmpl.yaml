@@ -14,7 +14,7 @@ git:
 service:
   name: hook
   
-replicaCount: 1
+replicaCount: 2
 
 image:
   repository: gcr.io/jenkinsxio/lighthouse

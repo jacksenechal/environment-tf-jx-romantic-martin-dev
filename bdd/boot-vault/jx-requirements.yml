@@ -20,7 +20,7 @@ environments:
     ingress:
       tls:
         enabled: false
-gitops: true
+gitops: false
 ingress:
   domain: boot.bdd.jenkins-x.rocks
   externalDNS: true
@@ -38,8 +38,9 @@ storage:
   reports:
     enabled: true
     url: "gs://jx-bdd-log-store3"
+vault:
+  disableURLDiscovery: true
 versionStream:
   ref: "master"
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
-
