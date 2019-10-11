@@ -4,8 +4,7 @@ jenkins:
     Global:
       EnvVars:
         DOCKER_REGISTRY: "registry.ng.bluemix.net"
-# Smaller cluster configurations require more time   
-jenkins:
+  # Smaller cluster configurations require more time
   Master:
     Readiness:
       InitialDelaySeconds: 600
@@ -13,4 +12,10 @@ jenkins:
       InitialDelaySeconds: 660
       
 docker-registry:
-  enabled: false      
+  enabled: false
+
+jenkins-x-platform:
+  # lets disable creating the jenkins-x-docker-cfg secret
+  # we can manage that by hand for now
+  .PipelineSecrets:
+    DockerConfig: ""
