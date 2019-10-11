@@ -11,3 +11,9 @@ jenkins:
     # for PKS there is a different docker host path
     DockerHostPath: "/var/vcap/sys/run/docker/docker.sock"
     DockerMountPath: "/var/run/docker.sock"
+
+jenkins-x-platform:
+  # lets disable creating the jenkins-x-docker-cfg secret
+  # we can manage that by hand for now
+  .PipelineSecrets:
+    DockerConfig: ""
