@@ -192,15 +192,6 @@ pipelineConfig:
             - verify
             - env
             dir: /workspace/source
-          - name: print-repositories
-            command: echo
-            args:
-            - ""
-            - ""
-            - now populating projects....
-            - ""
-            - ""
-            dir: /workspace/source/repositories
           - name: install-repositories
             command: jx
             args:
