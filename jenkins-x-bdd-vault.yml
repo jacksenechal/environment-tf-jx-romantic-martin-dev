@@ -15,6 +15,8 @@ pipelineConfig:
         environment:
           - name: GOPROXY
             value: http://jenkins-x-athens-proxy:80
+          - name: JX_REQUIREMENT_VAULT_DISABLE_URL_DISCOVERY
+            value: "true"
           - name: DOMAIN_ROTATION
             value: "true"
           - name: DOMAIN_PREFIX
