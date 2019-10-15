@@ -1,5 +1,3 @@
-
-# lets not accidentally check in Secret YAMLs!
 secrets.yaml
 mysecrets.yaml
 charts/
@@ -7,3 +5,4 @@ requirements.lock
 .DS_Store
 .idea
 env/cluster/
+env/parameters.schema.json
