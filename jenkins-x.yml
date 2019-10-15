@@ -15,7 +15,7 @@ pipelineConfig:
             - verify
             - values
             - --values-file=parameters.yaml
-            - --schema-file=parameters.tmp.schema.json
+            - --schema-file=parameters.tmpl.schema.json
             dir: /workspace/source/env
           - name: lint-env-helm
             command: make
