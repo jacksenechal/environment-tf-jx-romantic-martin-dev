@@ -45,7 +45,8 @@ pipelineConfig:
             - step
             - verify
             - preinstall
-            dir: /workspace/source/env
+            - --provider-values-dir="kubeProviders"
+            dir: /workspace/source
           - name: install-jx-crds
             command: jx
             args:
