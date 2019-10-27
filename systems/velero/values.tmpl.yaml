@@ -35,5 +35,16 @@ velero:
       bucket: {{ .Requirements.storage.backup.url | removeScheme | quote }}
       config:
         storageAccount: {{ .Requirements.velero.serviceAccount | quote }}
+{{- else if eq .Requirements.cluster.provider "iks" }}
+  snapshotsEnabled: false
+  configuration:
+    provider: aws
+    backupStorageLocation:
+      name: aws
+      bucket: bucket-name
+      config:
+        region: {{ .Requirements.cluster.region | quote }}
+        s3ForcePathStyle: "true"
+        s3Url: {{ .Requirements.storage.backup.url | quote }}
 {{- end }}
 
