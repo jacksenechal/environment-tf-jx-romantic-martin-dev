@@ -5,7 +5,7 @@ external-dns:
   provider: google
   google:
     serviceAccountSecret: external-dns-gcp-sa
- {{ if .Requirements.cluster.project }}
+ {{- if hasKey .Requirements.cluster "project" }}
     project: "{{ .Requirements.cluster.project }}"
  {{ end }}
   rbac:
