@@ -12,13 +12,22 @@ cleanup:
   enabled: false
 
 chartmuseum:
+{{- if eq .Requirements.repository "bucketrepo" }}
+  enabled: false
+{{- else }}
   env:
     secret:
       BASIC_AUTH_USER: "{{ .Parameters.adminUser.username }}"
       BASIC_AUTH_PASS: "{{ .Parameters.adminUser.password }}"
+{{- end }}
 
 nexus:
   defaultAdminPassword: "{{ .Parameters.adminUser.password }}"
+{{- if  or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+  enabled: true
+{{- else }}
+  enabled: false
+{{- end }}
 
 jenkins:
   Master:
