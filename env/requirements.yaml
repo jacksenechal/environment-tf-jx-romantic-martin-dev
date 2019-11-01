@@ -12,6 +12,10 @@ dependencies:
   condition: lighthouse.enabled
   name: lighthouse
   repository: http://chartmuseum.jenkins-x.io
+- alias: bucketrepo
+  condition: bucketrepo.enabled
+  name: bucketrepo
+  repository: http://chartmuseum.jenkins-x.io
 - name: jenkins-x-platform
   repository: http://chartmuseum.jenkins-x.io
 #- condition: chartmuseum.enabled

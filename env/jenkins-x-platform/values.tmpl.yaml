@@ -26,13 +26,40 @@ PipelineSecrets:
         <settings>
             <localRepository>/home/jenkins/.mvnrepository</localRepository>
             <!--This sends everything else to /public -->
-            <mirrors>
+{{- if  or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+              <mirrors>
                 <mirror>
                     <id>nexus</id>
+                    <name>nexus mirror</name>
                     <mirrorOf>external:*</mirrorOf>
                     <url>http://nexus/repository/maven-group/</url>
                 </mirror>
-            </mirrors>
+              </mirrors>
+{{- else if eq .Requirements.repository "bucketrepo" }}
+            <mirrors>
+                <mirror>
+                    <id>bucketrepo</id>
+                    <name>bucketrepo mirror</name>
+                    <mirrorOf>*</mirrorOf>
+                    <url>http://bucketrepo/bucketrepo/</url>
+                </mirror>
+              </mirrors>
+{{- else }}
+              <mirrors>
+                <mirror>
+                  <id>central</id>
+                  <name>US Central</name>
+                  <url>https://repo.maven.apache.org/maven2</url>
+                  <mirrorOf>central</mirrorOf>
+                </mirror>
+                <mirror>
+                  <id>UK</id>
+                  <name>UK Central</name>
+                  <url>https://uk.maven.org/maven2</url>
+                  <mirrorOf>central</mirrorOf>
+                </mirror>
+              </mirrors>
+{{- end }}
 
             <!-- lets disable the download progress indicator that fills up logs -->
             <interactiveMode>false</interactiveMode>
@@ -57,9 +84,15 @@ PipelineSecrets:
                 <profile>
                     <id>nexus</id>
                     <properties>
-                        <altDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altDeploymentRepository>
-                        <altReleaseDeploymentRepository>local-nexus::default::http://nexus/repository/maven-releases/</altReleaseDeploymentRepository>
-                        <altSnapshotDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- if  or (eq .Requirements.repository "nexus") (eq .Requirements.repository "") }}
+                      <altDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altDeploymentRepository>
+                      <altReleaseDeploymentRepository>local-nexus::default::http://nexus/repository/maven-releases/</altReleaseDeploymentRepository>
+                      <altSnapshotDeploymentRepository>local-nexus::default::http://nexus/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- else if eq .Requirements.repository "bucketrepo" }}
+                      <altDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altDeploymentRepository>
+                      <altReleaseDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-releases/</altReleaseDeploymentRepository>
+                      <altSnapshotDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altSnapshotDeploymentRepository>
+{{- end }}
                     </properties>
 
                     <repositories>
