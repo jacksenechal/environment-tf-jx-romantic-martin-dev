@@ -1,5 +1,14 @@
 cluster:
   domain: {{ .Requirements.ingress.domain }}
+{{- if hasKey .Requirements.ingress "exposer" }}
+  exposer: {{ .Requirements.ingress.exposer }}
+{{- else if eq .Requirements.cluster.provider "openshift" }}
+  exposer: Route
+{{- else if eq .Requirements.cluster.provider "minishift" }}
+  exposer: Route
+{{- else }}
+  exposer: Ingress
+{{- end }}
   namespace: {{ .Requirements.cluster.namespace | default "jx" }}
   namespaceSubDomain: {{ .Requirements.ingress.namespaceSubDomain | default ".jx." }}
 {{- if hasKey .Requirements.cluster "project" }}
