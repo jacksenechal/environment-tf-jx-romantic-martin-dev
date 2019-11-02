@@ -1,0 +1,6 @@
+{{- if eq .Requirements.repository "bucketrepo" }}
+enabled: false
+{{- else }}
+enabled: true
+{{- end }}
+
