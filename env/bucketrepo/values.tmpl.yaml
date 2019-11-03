@@ -1,4 +1,4 @@
-{{- if eq .Requirements.repository "bucketrepo" }}
+{{- if and (hasKey .Requirements "repository") (eq .Requirements.repository "bucketrepo") }}
 enabled: true
 {{- else }}
 enabled: false
