@@ -46,6 +46,8 @@ pipelineConfig:
                   - mountPath: /secrets
                     name: sa
             steps:
+              - name: verify-fmt
+                command: make verify-fmt
               - name: run-bdd
                 command: bdd/bdd.sh
                 args: ['bdd/boot-local', 'bdd-config']
