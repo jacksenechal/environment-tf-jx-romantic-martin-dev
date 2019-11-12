@@ -14,12 +14,11 @@ auth:
     username: "{{ .Parameters.pipelineUser.username }}"
     password: "{{ .Parameters.pipelineUser.token }}"
     url: {{ .Requirements.cluster.gitServer | default "https://github.com" }}
-
 {{- if hasKey .Parameters "docker" }}
-docker:
-  username: "{{ .Parameters.docker.username }}"
-  password: "{{ .Parameters.docker.password }}"
-  url: "{{ .Parameters.docker.url }}"
+  docker:
+    username: "{{ .Parameters.docker.username }}"
+    password: "{{ .Parameters.docker.password }}"
+    url: "{{ .Parameters.docker.url }}"
 {{- end }}
 
 tillerNamespace: ""
