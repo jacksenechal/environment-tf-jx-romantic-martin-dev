@@ -7,6 +7,17 @@ pipelineConfig:
           image: gcr.io/jenkinsxio/builder-go
         stages:
         - name: pr-checks
+          options:
+            containerOptions:
+              volumeMounts:
+              - mountPath: /builder/home/.jx/localSecrets/currentCluster
+                name: local-secrets
+                readOnly: true
+            volumes:
+            - name: local-secrets
+              secret:
+                optional: true
+                secretName: local-param-secrets
           steps:
           - args:
             - step
@@ -31,6 +42,17 @@ pipelineConfig:
           value: jx
         stages:
         - name: release
+          options:
+            containerOptions:
+              volumeMounts:
+              - mountPath: /builder/home/.jx/localSecrets/currentCluster
+                name: local-secrets
+                readOnly: true
+            volumes:
+            - name: local-secrets
+              secret:
+                optional: true
+                secretName: local-param-secrets
           steps:
           - args:
             - step

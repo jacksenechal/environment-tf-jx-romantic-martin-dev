@@ -99,6 +99,9 @@
     "enableDocker": {
       "type": "boolean",
       "title": "Do you want to configure an external Docker Registry?",
+{{- if and (ne .Requirements.cluster.provider "gke") (ne .Requirements.cluster.provider "eks") (ne .Requirements.cluster.provider "aks") }}
+      "const": true,
+{{- end}}
       "description": "By default Jenkins X will use the docker registry from the cloud provider. If you want to configure an external docker registry such as Docker Hub or your own existing docker registry enter Y"
     }
   },
@@ -107,7 +110,7 @@
       "if": {
         "properties": {
           "enableDocker": {
-            "const": "true",
+            "const": true,
             "type": "boolean"
           }
         }
@@ -119,7 +122,8 @@
             "required": [
               "url",
               "username",
-              "password"
+              "password",
+              "email"
             ],
             "properties": {
               "url": {
@@ -139,6 +143,11 @@
                 "format": "password",
                 "title": "Docker Registry password",
                 "description": "The password used to access the external docker registry"
+              },
+              "email": {
+                "type": "string",
+                "title": "Docker Registry email",
+                "description": "The email used to configure the external docker registry"
               }
             }
           }
