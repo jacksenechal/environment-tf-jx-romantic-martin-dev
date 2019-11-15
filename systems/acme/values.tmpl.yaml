@@ -1,9 +1,15 @@
 cluster:
   domain: {{ .Requirements.ingress.domain }}
+  provider: {{ .Requirements.cluster.provider }}
 {{- if hasKey .Requirements.cluster "project" }}
   projectID: {{ .Requirements.cluster.project }}
 {{- else }}
   projectID: ""
+{{- end }}
+{{- if hasKey .Requirements.cluster "region" }}
+  region: {{ .Requirements.cluster.region }}
+{{- else }}
+  region: ""
 {{- end }}
 
  {{- if .Requirements.ingress.tls }}
