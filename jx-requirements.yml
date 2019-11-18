@@ -1,10 +1,10 @@
 cluster:
   clusterName: ""
   environmentGitOwner: ""
+  environmentGitPublic: false
   project: ""
   provider: gke
   zone: ""
-  environmentGitPublic: false
 gitops: true
 environments:
 - key: dev
