@@ -19,6 +19,8 @@ cluster:
   serverUrl: ""
 {{- if .Requirements.ingress.tls.enabled }}
   tls: true
+{{- else }}
+  tls: false
 {{- end }}
 
 gitops:
