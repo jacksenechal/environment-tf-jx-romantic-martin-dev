@@ -201,8 +201,8 @@ pipelineConfig:
             - step
             - create
             - templated
-            - --parameters-file=../../env/parameters.yaml
-            - --requirements-dir=../../
+            - --parameters-file=/workspace/source/env/parameters.yaml
+            - --requirements-dir=/workspace/source/
             - --template-file=jx-auth-configmap.tmpl.yaml
             - --config-file=templates/jx-auth-configmap.yaml
             command: jx
