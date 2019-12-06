@@ -1,6 +1,0 @@
-apiVersion: v1
-description: Jx Auth Chart
-maintainers:
-- name: Team
-name: jx-auth
-version: "1"
