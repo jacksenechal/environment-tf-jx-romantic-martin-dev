@@ -5,7 +5,13 @@ jenkins-x-platform:
     # lets enable ECR docker builds
     DockerConfig: |-
       {
+{{- if .Requirements.cluster.registry }}
+        "credHelpers": {
+          "{{ .Requirements.cluster.registry }}": "ecr-login"
+        }
+{{- else }}
         "credsStore": "ecr-login"
+{{- end }}
       }
       
 docker-registry:
