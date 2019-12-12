@@ -16,6 +16,28 @@ iam:
     attachPolicyARNs:
     - {{.IAM.TektonBotPolicy | quote}}
 {{- end }}
+{{- if .IAM.ExternalDNSPolicy }}
+  - metadata:
+      name: exdns-external-dns
+      namespace: jx
+      labels: {aws-usage: "jenkins-x"}
+    attachPolicyARNs:
+    - {{.IAM.ExternalDNSPolicy | quote}}
+{{- end }}
+{{- if .IAM.CertManagerPolicy }}
+  - metadata:
+      name: cm-cert-manager
+      namespace: cert-manager
+      labels: {aws-usage: "jenkins-x"}
+    attachPolicyARNs:
+    - {{.IAM.CertManagerPolicy | quote}}
+  - metadata:
+      name: cm-cainjector
+      namespace: cert-manager
+      labels: {aws-usage: "jenkins-x"}
+    attachPolicyARNs:
+    - {{.IAM.CertManagerPolicy | quote}}
+{{- end }}
   - metadata:
       name: jenkins-x-controllerbuild
       namespace: jx
