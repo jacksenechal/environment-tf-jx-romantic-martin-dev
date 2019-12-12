@@ -1,6 +1,6 @@
 {{- if .Values.certmanager.enabled }}
 {{- if eq .Values.certmanager.production "true" }}
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: "tls-{{ .Values.cluster.domain | replace "." "-" }}-p"
