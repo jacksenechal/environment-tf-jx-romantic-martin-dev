@@ -1,6 +1,7 @@
 cluster:
   clusterName: ""
   environmentGitOwner: ""
+  environmentGitPublic: false
   project: ""
   provider: gke
   zone: ""
