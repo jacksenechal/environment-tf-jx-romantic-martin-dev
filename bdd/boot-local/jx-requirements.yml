@@ -1,5 +1,5 @@
 cluster:
-  clusterName: bdd-boot
+  clusterName: bdd-boot-local
   environmentGitOwner: jenkins-x-bot-test
   project: jenkins-x-bdd3
   provider: gke
@@ -37,4 +37,3 @@ versionStream:
   ref: "master"
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
-
