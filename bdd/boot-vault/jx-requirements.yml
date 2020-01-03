@@ -1,5 +1,5 @@
 cluster:
-  clusterName: bdd-boot-local
+  clusterName: bdd-boot-vault
   environmentGitOwner: jenkins-x-bot-test
   project: jenkins-x-bdd3
   provider: gke
@@ -22,7 +22,8 @@ ingress:
     enabled: false
     production: false
 kaniko: true
-secretStorage: local
+secretStorage: vault
+repository: nexus
 storage:
   logs:
     enabled: false
@@ -36,4 +37,6 @@ storage:
 versionStream:
   ref: "master"
   url: https://github.com/jenkins-x/jenkins-x-versions.git
+vault:
+  disableURLDiscovery: true
 webhook: prow
