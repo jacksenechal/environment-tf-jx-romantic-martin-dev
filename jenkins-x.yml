@@ -209,11 +209,6 @@ pipelineConfig:
             dir: /workspace/source/systems/jx-auth
             name: create-jx-auth-config
           - args:
-            - templates/jx-auth-configmap.yaml
-            command: cat
-            dir: /workspace/source/systems/jx-auth
-            name: print-jx-auth-config
-          - args:
             - step
             - helm
             - apply
