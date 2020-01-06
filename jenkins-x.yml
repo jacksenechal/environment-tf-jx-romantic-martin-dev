@@ -198,16 +198,11 @@ pipelineConfig:
             dir: /workspace/source/env
             name: create-helm-values
           - args:
-            - jx-requirements.yaml
-            command: cat
-            dir: /workspace/source
-            name: print-requirements
-          - args:
             - step
             - create
             - templated
-            - --parameters-file=/workspace/source/env/parameters.yaml
-            - --requirements-dir=/workspace/source/
+            - --parameters-file=../../env/parameters.yaml
+            - --requirements-dir=../../
             - --template-file=jx-auth-configmap.tmpl.yaml
             - --config-file=templates/jx-auth-configmap.yaml
             command: jx
