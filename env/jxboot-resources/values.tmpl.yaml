@@ -72,11 +72,19 @@ gitops:
     repo: "{{ .Environments.staging.repository }}"
     owner: "{{ .Environments.staging.owner | default .Requirements.cluster.environmentGitOwner }}"
     server: ""
+    namespace: {{ .Requirements.cluster.namespace | default "jx" }}-staging
+{{- if hasKey .Environments.staging "remoteCluster" }}
+    remote: {{ .Environments.staging.remoteCluster | default "false" }}
+{{- end }}
 
   production:
     repo: "{{ .Environments.production.repository }}"
     owner: "{{ .Environments.production.owner | default .Requirements.cluster.environmentGitOwner }}"
     server: ""
+    namespace: {{ .Requirements.cluster.namespace | default "jx" }}-production
+{{- if hasKey .Environments.production "remoteCluster" }}
+    remote: {{ .Environments.production.remoteCluster | default "false" }}
+{{- end }}
 
 storage:
   logs:
