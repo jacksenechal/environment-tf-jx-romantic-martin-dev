@@ -6,3 +6,8 @@ tekton:
 {{- else }}
   enabled: false
 {{- end }}
+
+# Use cert-manager 0.11 CRDs/APIs with Dex
+dex:
+  certs:
+    newApi: true
