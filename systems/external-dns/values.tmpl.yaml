@@ -20,4 +20,8 @@ external-dns:
   rbac:
     create: true
   domainFilters:
-  - "{{ .Requirements.ingress.domain }}"
+{{- range .Requirements.environments }}
+ {{- if .ingress.domain }}
+  - "{{ .ingress.domain }}"
+  {{- end }}
+{{- end }}
