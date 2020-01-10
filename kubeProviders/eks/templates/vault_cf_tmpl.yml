@@ -69,7 +69,7 @@ Resources:
           - dynamodb:DescribeTable
           Effect: Allow
           Resource:
-            Fn::Sub: "${AWSDynamoDBTable.Arn}/*"
+            Fn::Sub: "${AWSDynamoDBTable.Arn}"
           Sid: DynamoDB
         - Action:
           - s3:PutObject
