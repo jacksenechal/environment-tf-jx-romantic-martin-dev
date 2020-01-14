@@ -44,3 +44,10 @@ iam:
       labels: {aws-usage: "jenkins-x"}
     attachPolicyARNs:
     - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  - metadata:
+      name: jxui
+      namespace: jx
+      labels: {aws-usage: "jenkins-x"}
+    attachPolicyARNs:
+    - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+
