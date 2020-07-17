@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:tf-jx-romantic-martin/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: jsenechal+gitbot@mavenlink.com
+  token: vault:tf-jx-romantic-martin/pipelineUser:token
+  username: jacksenechal
+prow:
+  hmacToken: vault:tf-jx-romantic-martin/prow:hmacToken

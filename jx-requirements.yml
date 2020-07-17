@@ -1,37 +1,68 @@
 autoUpdate:
   enabled: false
   schedule: ""
-terraform: true
+bootConfigURL: https://github.com/jacksenechal/environment-tf-jx-romantic-martin-dev
 cluster:
-  clusterName: "tf-jx-romantic-martin"
-  environmentGitOwner: ""
+  clusterName: tf-jx-romantic-martin
+  devEnvApprovers:
+  - jacksenechal
+  environmentGitOwner: jacksenechal
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
   provider: eks
-  region: "us-west-2"
-gitops: true
+  region: us-west-2
+  registry: 609465708365.dkr.ecr.us-west-2.amazonaws.com
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    domain: 44.224.207.166.nip.io
+    externalDNS: false
+    ignoreLoadBalancer: true
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-tf-jx-romantic-martin-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-tf-jx-romantic-martin-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-tf-jx-romantic-martin-production
+gitops: true
 ingress:
-  domain: ""
-  ignoreLoadBalancer: true
+  domain: 44.224.207.166.nip.io
   externalDNS: false
+  ignoreLoadBalancer: true
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: vault
-vault:
-  aws:
-    iamUserName: ""
-    dynamoDBTable: "vault-unseal-tf-jx-romantic-martin-zAjnvTpG"
-    dynamoDBRegion: "us-west-2"
-    kmsKeyId: "44dd662e-02ed-4939-8a2d-397a3d3bd137"
-    kmsRegion: "us-west-2"
-    s3Bucket: "vault-unseal-tf-jx-romantic-martin-20200715013439773400000002"
-    s3Region: "us-west-2"
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
     url: s3://logs-tf-jx-romantic-martin-20200715013439780300000005
@@ -41,7 +72,19 @@ storage:
   repository:
     enabled: true
     url: s3://repository-tf-jx-romantic-martin-20200715013439781000000007
+terraform: true
+vault:
+  aws:
+    dynamoDBRegion: us-west-2
+    dynamoDBTable: vault-unseal-tf-jx-romantic-martin-zAjnvTpG
+    kmsKeyId: 44dd662e-02ed-4939-8a2d-397a3d3bd137
+    kmsRegion: us-west-2
+    s3Bucket: vault-unseal-tf-jx-romantic-martin-20200715013439773400000002
+    s3Region: us-west-2
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: master
+  ref: v1.0.535
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: lighthouse
