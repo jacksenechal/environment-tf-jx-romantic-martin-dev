@@ -1,35 +1,47 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+terraform: true
 cluster:
-  clusterName: ""
+  clusterName: "tf-jx-romantic-martin"
   environmentGitOwner: ""
-  environmentGitPublic: false
-  project: ""
-  provider: gke
-  zone: ""
+  provider: eks
+  region: "us-west-2"
 gitops: true
 environments:
-- key: dev
-- key: staging
-- key: production
+  - key: dev
+  - key: staging
+  - key: production
 ingress:
   domain: ""
+  ignoreLoadBalancer: true
   externalDNS: false
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
-secretStorage: local
+secretStorage: vault
+vault:
+  aws:
+    iamUserName: ""
+    dynamoDBTable: "vault-unseal-tf-jx-romantic-martin-zAjnvTpG"
+    dynamoDBRegion: "us-west-2"
+    kmsKeyId: "44dd662e-02ed-4939-8a2d-397a3d3bd137"
+    kmsRegion: "us-west-2"
+    s3Bucket: "vault-unseal-tf-jx-romantic-martin-20200715013439773400000002"
+    s3Region: "us-west-2"
 storage:
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://logs-tf-jx-romantic-martin-20200715013439780300000005
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://reports-tf-jx-romantic-martin-20200715013439780700000006
   repository:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://repository-tf-jx-romantic-martin-20200715013439781000000007
 versionStream:
-  ref: "master"
+  ref: master
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: lighthouse
