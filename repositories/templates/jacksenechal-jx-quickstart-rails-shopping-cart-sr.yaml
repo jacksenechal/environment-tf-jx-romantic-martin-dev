@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: jacksenechal
+    provider: github
+    repository: jx-quickstart-rails-shopping-cart
+  name: jacksenechal-jx-quickstart-rails-shopping-cart
+spec:
+  description: Imported application for jacksenechal/jx-quickstart-rails-shopping-cart
+  httpCloneURL: https://github.com/jacksenechal/jx-quickstart-rails-shopping-cart.git
+  org: jacksenechal
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: jx-quickstart-rails-shopping-cart
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/jacksenechal/jx-quickstart-rails-shopping-cart.git

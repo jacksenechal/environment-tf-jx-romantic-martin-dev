@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: jacksenechal
+  repo: jx-quickstart-rails-shopping-cart
+  url: https://github.com/jacksenechal/jx-quickstart-rails-shopping-cart.git
+  version: ""
+  versionURL: ""
